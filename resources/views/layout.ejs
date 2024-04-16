@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="container mx-auto flex items-center justify-between px-6 py-2">
+    <nav class="n container mx-auto flex items-center justify-between px-6 py-2">
         <div>
             <img src="/img/logob.png" width="55px" height="55px" alt="logo">
         </div>
@@ -22,7 +22,11 @@
                 <li class="ml-6"><a href="#">Offers</a></li>
                 <li class="ml-6"><a href="#">Cuisines</a></li>
                 <li class="ml-6"><a href="/login">Login</a></li>
-                <li class="ml-6"><a href="/cart" class="inline-block px-2 py-1 rounded-full"><img src="/img/cart.png" width="20px" height="20px" alt="cart"></a></li>
+                <li class="ml-6"><a href="/cart" class="inline-block px-2 py-1 rounded-full flex items-center">
+                    <span id="cartCounter"
+                        class="text-white font-bold pr-2"><%= session.cart ? session.cart.totalQty : '' %></span>
+                    <img src="/img/cart.png" width="20px" height="20px" alt="cart">
+                </a></li>
             </ul>
         </div>
     </nav>

@@ -1,8 +1,9 @@
-
+const Menu = require('../../models/menu')
 function homeCtrl() {
     return {
         async index(req, res) {
-            res.render('home')
+            const items = await Menu.find()
+            return res.render('home',{items: items})
         }
     }
 }
