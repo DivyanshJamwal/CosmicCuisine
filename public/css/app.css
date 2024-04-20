@@ -243,6 +243,10 @@ body {
   color: #232323;
 }
 
+nav {
+  background: #a0e8cd;
+}
+
 nav li:last-child a {
   background: #FE5F1E;
 }
