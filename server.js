@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3000
 const mongoose = require('mongoose')
 const session = require('express-session')
 const flash = require('express-flash')
+const passport = require('passport')
 const MongoDbStore = require('connect-mongodb-session')(session)
 const MONGO_CONNECTION_URL = process.env.MONGO_CONNECTION_URL
 
@@ -35,14 +36,21 @@ app.use(session({
     resave: false,
     store: mongoStore,
     saveUninitialized: false,
-    cookie: { maxAge: 1000 * 60 * 60 * 24 } // 24 hour
+    cookie: { maxAge: 1000 * 10 } // 1 min
 }))
 
 app.use(flash())
 
+// Passport config
+const passportInit = require('./app/config/passport')
+passportInit(passport)
+app.use(passport.initialize())
+app.use(passport.session())
+
 //Assets
 app.use(express.static('public'))
 app.use(express.json())
+app.use(express.urlencoded({extended: false}))
 
 // Global middleware
 app.use((req, res, next) => {
